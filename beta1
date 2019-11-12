@@ -1,0 +1,51 @@
+var x,y,vx=[170,300,300,300,170],vy=[50,50,200,350,350],r;
+x=50
+y=50
+function setup() {
+  createCanvas(400, 400);
+
+  r=(int(random(0,100))%5);
+  alert(r)
+}
+
+function draw() {
+  background(0);
+  rectMode(CENTER);
+// criando os retangulos onde estarão as opções. deverão ser 5. fill para cores e rect para os corpos.  
+  for(i=0;i<5;i++){
+    if(i==r){
+      fill(0,255,0);
+    }else{
+      fill(255,0,0);
+    }
+    rect(vx[i],vy[i],80,50);
+  }
+// criando o personagem e definindo os movimentos.
+  if(keyIsDown(DOWN_ARROW)){
+    y+=7
+  }
+    if(keyIsDown(UP_ARROW)){
+    y-=7
+  }
+    if(keyIsDown(LEFT_ARROW)){
+    x-=7
+  }
+    if(keyIsDown(RIGHT_ARROW)){
+    x+=7
+  }
+  fill(255)
+  ellipse(x,y,30,30);
+  
+  
+  
+  if(keyIsDown(CONTROL)){
+    for(i=0;i<5;i++){
+      if(dist(x,y,vx[i],vy[i])<40 && i==r){
+        alert("boa!")
+      }else if((dist(x,y,vx[i],vy[i])<40)){
+        alert("emocionou, cobra!")
+      }
+    }
+  }
+ 
+}
